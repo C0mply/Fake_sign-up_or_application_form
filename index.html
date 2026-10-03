@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nocturne — Vampire Night Club Guest List</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="layout">
+    <aside class="club" aria-label="About the club">
+      <a class="brand" href="#guest-list"><span class="brand-icon" aria-hidden="true">N</span> NOCTURNE</a>
+      <div class="moon" aria-hidden="true"></div>
+      <p class="eyebrow">VAMPIRE NIGHT CLUB</p>
+      <h1>Some nights<br>last forever.</h1>
+      <p class="club-copy">An invitation for the beautifully undead. Good music, terrible reflections, and absolutely no garlic.</p>
+      <div class="club-facts"><span>Doors after sunset</span><span>20:00 — 06:00</span><span>Castle time</span></div>
+      <!-- This input is outside the form, but belongs to it through form="guest-list". -->
+      <div class="bat-card">
+        <p class="eyebrow">DELIVERY BY BAT</p>
+        <label for="bat-contact">Emergency bat contact</label>
+        <input id="bat-contact" name="bat_contact" type="text" form="guest-list" placeholder="e.g. Sir Flaps-a-Lot" maxlength="80">
+        <p>Your winged companion, in case you misplace your coffin.</p>
+      </div>
+      <p class="club-footer">Est. 1492 · Still not a morning person.</p>
+    </aside>
+
+    <main>
+      <header class="form-header">
+        <p class="eyebrow">YOUR NAME. OUR LIST.</p>
+        <h2>Join the guest list</h2>
+        <p>Tell us a little about your afterlife. Fields marked * are required.</p>
+      </header>
+      <!-- GET is the default method. Submit buttons below can override it. -->
+      <form id="guest-list" action="https://httpbin.org/get" method="get" target="_blank" rel="noopener noreferrer">
+        <fieldset>
+          <legend><span>01</span> The guest</legend>
+          <div class="grid">
+            <div class="field">
+              <label for="alias">Ancient alias *</label>
+              <input id="alias" name="alias" type="text" placeholder="Count Testula" minlength="2" maxlength="80" required>
+            </div>
+            <div class="field">
+              <label for="email">Bat-mail address *</label>
+              <input id="email" name="email" type="email" placeholder="bat@example.com" required>
+            </div>
+            <div class="field">
+              <label for="age">Years since birth *</label>
+              <input id="age" name="age" type="number" min="18" max="5000" step="1" placeholder="342" required>
+            </div>
+            <div class="field">
+              <label for="arrival">Arrival after sunset *</label>
+              <input id="arrival" name="arrival" type="datetime-local" aria-describedby="arrival-help" required>
+              <small id="arrival-help">Choose a time from 20:00 to 05:59, castle time.</small>
+            </div>
+            <div class="field">
+              <label for="circle">Membership circle *</label>
+              <select id="circle" name="membership_circle" required>
+                <option value="">Choose your circle</option>
+                <option value="new-fangs">New Fangs — first night out</option>
+                <option value="full-moon">Full Moon — regular guest</option>
+                <option value="ancient-vip">Ancient VIP — 500+ years of nightlife</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="party-size">Creatures in your party *</label>
+              <input id="party-size" name="party_size" type="number" min="1" max="6" step="1" value="1" required>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span>02</span> Your midnight preferences</legend>
+          <fieldset class="choice-group">
+            <legend>Welcome drink *</legend>
+            <div class="choices">
+              <div><input id="drink-tomato" name="welcome_drink" type="radio" value="tomato" checked required><label for="drink-tomato">Tomato tonic</label></div>
+              <div><input id="drink-beetroot" name="welcome_drink" type="radio" value="beetroot"><label for="drink-beetroot">Beetroot fizz</label></div>
+              <div><input id="drink-mystery" name="welcome_drink" type="radio" value="mystery"><label for="drink-mystery">House mystery</label></div>
+            </div>
+          </fieldset>
+          <fieldset class="choice-group">
+            <legend>Little luxuries</legend>
+            <div class="choices">
+              <div><input id="perk-bat" name="perks" type="checkbox" value="bat-parking"><label for="perk-bat">Bat parking</label></div>
+              <div><input id="perk-cloak" name="perks" type="checkbox" value="cloak-check"><label for="perk-cloak">Cloak check</label></div>
+              <div><input id="perk-coffin" name="perks" type="checkbox" value="coffin-lounge"><label for="perk-coffin">Coffin lounge</label></div>
+            </div>
+          </fieldset>
+          <div class="grid preference-grid">
+            <div class="field">
+              <div class="range-heading"><label for="garlic">Garlic resistance</label><output id="garlic-value" name="garlic_reading" for="garlic" aria-label="Garlic resistance reading">3 / 10</output></div>
+              <input id="garlic" name="garlic_resistance" type="range" min="0" max="10" step="1" value="3">
+              <small>0 = dramatic fainting · 10 = suspiciously human</small>
+            </div>
+            <div class="field">
+              <label for="cape">Cape color</label>
+              <div class="color-row"><input id="cape" name="cape_color" type="color" value="#9f2748"><span id="cape-value">#9f2748</span></div>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span>03</span> The finishing touches</legend>
+          <div class="field">
+            <label for="portrait">Portrait for the doorman</label>
+            <input id="portrait" name="portrait" type="file" accept="image/png,image/jpeg,image/webp" aria-describedby="portrait-help">
+            <small id="portrait-help">An optional fictional portrait: PNG, JPG, or WebP. Mirrors need not apply.</small>
+          </div>
+          <div class="field requests">
+            <label for="requests">Special requests</label>
+            <textarea id="requests" name="special_requests" rows="3" maxlength="600" placeholder="A quiet coffin, a seat away from the sunrise…"></textarea>
+          </div>
+          <div class="agreement"><input id="night-rules" name="night_rules" type="checkbox" value="accepted" required><label for="night-rules">I will arrive after sunset and leave my garlic at home. *</label></div>
+        </fieldset>
+
+        <div class="submit-area">
+          <div class="submit-buttons">
+            <button id="submit-get" name="intent" value="preview-invitation" type="submit" formmethod="get" class="button secondary">Preview invitation <span>GET</span></button>
+            <button id="submit-post" name="intent" value="join-guest-list" type="submit" formmethod="post" formaction="https://httpbin.org/post" formenctype="multipart/form-data" class="button primary">Join guest list <span>POST</span></button>
+          </div>
+          <!-- Creative override: route the same application to the fictional Bat Concierge. -->
+          <button id="submit-concierge" name="intent" value="ask-bat-concierge" type="submit" formmethod="post" formaction="https://httpbin.org/anything/nocturne-bat-concierge" formenctype="multipart/form-data" class="concierge">Need a coffin pickup? Ask the Bat Concierge →</button>
+          <p id="submit-status" role="status" aria-live="polite"></p>
+          <p class="demo-note">A fictional club and a demo form. Use invented details and sample images. Submissions go to httpbin.org, which shows the request in a new tab. GET includes the file name; POST includes the file itself.</p>
+        </div>
+      </form>
+      <footer><a href="https://github.com/C0mply/Fake_sign-up_or_application_form">View source on GitHub</a></footer>
+    </main>
+  </div>
+</body>
+</html>
